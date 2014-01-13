@@ -5,6 +5,20 @@ hakkan
 
 Hakkan is going to be a loose collection of tools that will allow me to keep a generated static site but have the infrastructure around it to make it behave like it was dynamic site.
 
+Goals
+=====
+The project is going to answer the question - how can you get a static site
+to behave and feel like it's one of those single-page-apps that are all
+web-ish without losing the focus: it's all staticly served!
+
+Keep to a minimum those items that have to run as a daemon or web app. I know
+that I cannot completely remove them - after all there has to be something on
+the receiving end of a HTML delivered web mention. Well, I could make it a
+python CGI app!
+
+In reality it will mostly be two items: one a daemon to handle file events and
+a Python Flask web app for web hooks and other HTML triggered events.
+
 Roadmap
 =======
 
