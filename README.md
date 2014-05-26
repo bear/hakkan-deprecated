@@ -29,13 +29,14 @@ Working
 Planned
 -------
 * daemon to monitor content directory for changes
-** trigger site generate for changes to markdown files
-** send webmention when content file changes
+ * trigger site generate for changes to markdown files
+ * send webmention when content file changes
 * webhook for incoming webmentions
-* tool to allow POST of markdown file for new
-** articles
-** notes
-** events
+* tool to allow POST of markdown file
+ * consider using [micropub](http://indiewebcamp.com/micropub)  
+ * articles
+ * notes
+ * events
 * POSSE tools
 
 Requires
