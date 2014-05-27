@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+
+    {% for key, value in meta.iteritems() %}
+    <meta name="{{ key }}" content="{{ value }}"/>
+    {% endfor %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="mobile-web-app-capable" content="yes"/>
+
+    <link rel="shortcut icon" href="/images/bear_128x128.jpg" sizes="128x128"/>
+    <link rel="apple-touch-icon" href="/images/bear_128x128.jpg" sizes="128x128"/>
+    <link rel="apple-touch-icon-precomposed" href="/images/bear_128x128.jpg" sizes="128x128"/>
+    <link rel="alternate" type="application/atom+xml" href="{{ base_url }}/atom.xml"/>
+    <link type="text/plain" rel="author" href="/humans.txt"/>
+    <link rel="rdfs:seeAlso" href="/bear_foaf.rdf"/>
+    <link rel="foaf" href="/bear_foaf.rdf"/>
+    <link rel="meta" type="application/rdf+xml" title="foaf" href="/bear_foaf.rdf"/>
+    <link rel="webmention" href="https://bear.im/webmention"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Open+Sans:400italic,600italic,400,600"
+          rel="stylesheet" type="text/css">
+    <link href="/css/bearlog.css"
+          rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div id="blog" class="page-wrapper">
+  <section class="intro">
+      <header class="header">
+        <h1>Bear's Log</h1>
+        <h2>a journal writ one beer at a time</h2>
+      </header>
+  </section>
+
+  <div class="content">
+    {% block content %}{% endblock %}
+
+    <footer class="footer">
+      <p class="h-card">
+        &copy 2003-2014 by <a class="p-name u-url" href="/about">Mike Taylor</a>
+      </p>
+      <a xmlns:cc="//creativecommons.org/ns#" 
+         property="cc:attributionName"
+         rel="cc:attributionURL"
+         href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+          <img src="//i.creativecommons.org/l/by-sa/3.0/us/88x31.png" 
+               alt="Creative Commons Attribution-ShareAlike 3.0 United States"/>
+      </a>
+      <p>
+        <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/us/">
+          Creative Commons Attribution-ShareAlike 3.0 United States
+        </a>
+      </p>
+    </footer>
+  </div>
+
+  <aside class="sidebar" role="complementary">
+    <div class="wrapper">
+      <nav role="navigation">
+        <h3>links</h3>
+        <ul>
+          <li><a href="/about">about</a></li>
+          <li><a href="/code">code</a></li>
+          <li><a href="/presentations">presentations</a></li>
+        </ul>
+        <h3>archives</h3>
+        <ul>
+          <li><a href="{{ baseurl }}archives.html">archives</a></li>
+          <li><a href="{{ baseurl }}tags.html">tags</a></li>
+        </ul>
+        <h3>syndication</h3>
+        <ul>
+          <li><a href="{{ baseurl }}atom.xml" rel="alternate">atom</a></li> 
+          <li><a href="{{ baseurl }}rss.xml" rel="alternate">rss</a></li>
+          <li><input type="button" onclick="(function(){var z=document.createElement('script');z.src='https://www.subtome.com/load.js';document.body.appendChild(z);})()" value="Subscribe">
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+</div>
+{% include "analytics.jinja" %} 
+</body>
+</html>

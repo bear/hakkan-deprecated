@@ -1,4 +1,3 @@
-tools.py
 #!/usr/bin/env python
 
 """
@@ -8,6 +7,12 @@ tools.py
 
 import os, sys
 import json
+import types
+
+
+_configPaths = (os.getcwd(), '~/', '~/.hakkan/')
+_configName  = 'hakkan.cfg'
+
 
 def mkpath(path):
     try:
@@ -21,20 +26,35 @@ def mkpath(path):
 def normalizeFilename(filename):
     result = os.path.expanduser(filename)
     result = os.path.abspath(result)
+    result = os.path.normpath(result)
     return result
 
-def loadConfig(cfgFilename):
-    result = {}
+def findFile(filename, paths):
+    result = filename
 
-    if not os.path.exists(cfgFilename):
-        for cfgpath in configPaths:
-            possibleFile = normalizeFilename(os.path.join(cfgpath, configName))
-            if os.path.exists(possibleFile):
-                result = json.load(open(possibleFile, 'r'))
+    if isinstance(paths, types.TupleType) or isinstance(paths, types.ListType):
+        checkPaths = paths
+    else:
+        checkPaths = [ paths, ]
+
+    if not os.path.exists(filename):
+        for path in checkPaths:
+            possibleFilename = normalizeFilename(os.path.join(path, filename))
+            if os.path.exists(possibleFilename):
+                result = possibleFilename
                 break
     else:
-        possibleFile = normalizeFilename(cfgFilename)
-        if os.path.exists(possibleFile):
-            result = json.load(open(possibleFile, 'r'))
+        possibleFilename = normalizeFilename(filename)
+        if os.path.exists(possibleFilename):
+            result = possibleFilename
+
+    return result
+
+def loadConfig(configFilename=_configName, configPaths=_configPaths):
+    result   = {}
+    filename = findFile(configFilename, configPaths)
+
+    if os.path.exists(filename):
+        result = json.load(open(filename, 'r'))
 
     return result

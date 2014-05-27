@@ -1,0 +1,13 @@
+{% extends "base.jinja" %}
+{% block title %}{{ title }} <small>[tags]</small>{% endblock %}
+{% block content %}
+<h2>Tags</h2>
+{% for tag in taglist %}
+<h3>{{ tag }}</h3>
+<table>
+{% for article in tags[tag] %}
+    <tr><td><a href="{{ article.url }}">{{ article.title }}</a></td></tr>
+{% endfor %}
+</table>
+{% endfor %}
+{% endblock %}

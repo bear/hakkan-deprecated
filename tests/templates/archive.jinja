@@ -1,0 +1,16 @@
+{% extends "base.jinja" %}
+{% block title %}{{ title }} <small>[archive]</small>{% endblock %}
+{% block content %}
+<h2>Archives</h2>
+{% for year in yearlist %}
+<h3>{{ year }}</h3>
+<table>
+{% for article in years[year] %}
+    <tr>
+        <td>{{ article.date.strftime("%d %b") }}</td>
+        <td><a href='{{ article.url }}'>{{ article.title }}</a></td>
+    </tr>
+{% endfor %}
+</table>
+{% endfor %}
+{% endblock %}
