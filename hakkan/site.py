@@ -16,13 +16,13 @@ import argparse
 from tools import normalizeFilename, loadConfig, mkpath
 
 import jinja2
-import markdown2
+import misaka
 
 import pprint
 pp = pprint.PrettyPrinter(indent=2)
 
-markdownExtras = ['fenced-code-blocks', 'smarty-pants', 'cuddled-lists']
-markdowner     = markdown2.Markdown(extras=markdownExtras)
+markdownExtras = misaka.EXT_FENCED_CODE | misaka.EXT_NO_INTRA_EMPHASIS
+markdownFlags  = misaka.HTML_SMARTYPANTS
 
 
 class Post(object):
@@ -87,7 +87,7 @@ class Post(object):
             self.attribs['baseurl']  = self.baseurl
             self.attribs['url']      = '%(baseurl)s%(year)s/%(doy)s/%(slug)s' % self.attribs
             self.content             = ''.join(self.lines)
-            self.html                = markdowner.convert(self.content)
+            self.html                = misaka.html(self.content, extensions=markdownExtras, render_flags=markdownFlags)
             self.key                 = '%(index)s.%(slug)s' % self.attribs 
 
 
