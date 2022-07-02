@@ -29,7 +29,7 @@ lint: clean
 	pipenv run flake8 src tests --tee --output-file=violations.flake8.txt
 
 test: lint
-	pipenv install "-e ."
+	pipenv install --dev "-e ."
 	pipenv run pytest
 
 coverage: test

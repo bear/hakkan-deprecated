@@ -17,12 +17,12 @@ wheel = "*"
 build = "*"
 twine = "*"
 bleach = "*"
+hakkan = {editable = true, path = "."}
 
 [packages]
 click = "*"
 toml = "*"
 pytz = "*"
-hakkan = {editable = true, path = "."}
 
 [requires]
 python_version = "3.9"
