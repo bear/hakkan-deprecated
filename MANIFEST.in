@@ -1,0 +1,5 @@
+include *.md
+include *.txt
+include Makefile
+exclude violations.flake8.txt
+prune .DS_Store
