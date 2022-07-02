@@ -32,8 +32,7 @@ test: lint
 	pipenv install "-e ."
 	pipenv run pytest
 
-coverage: clean
-	pipenv install "-e ."
+coverage: test
 	pipenv run coverage run -m pytest
 	pipenv run coverage report
 	pipenv run coverage html

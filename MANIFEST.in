@@ -1,7 +1,7 @@
 include *.md
 include *.txt
 include Makefile
-include Pipfile.lock
 include Pipfile
+exclude Pipfile.lock
 exclude violations.flake8.txt
 prune .DS_Store
